@@ -20,7 +20,7 @@ func main() {
 
 	router.GET("/api/account", func(c *gin.Context) {
 		c.JSON(http.StatusOK, gin.H{
-			"hello": "you 2",
+			"hello": "you 3",
 		})
 	})
 
