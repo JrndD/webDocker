@@ -10,6 +10,7 @@ import (
 	"time"
 
 	"github.com/gin-gonic/gin"
+	"github.com/jrndd/webdocker/handler"
 )
 
 func main() {
@@ -18,10 +19,8 @@ func main() {
 
 	router := gin.Default()
 
-	router.GET("/api/account", func(c *gin.Context) {
-		c.JSON(http.StatusOK, gin.H{
-			"hello": "you 3",
-		})
+	handler.NewHandler(&handler.Config{
+		R: router,
 	})
 
 	srv := &http.Server{
@@ -39,7 +38,7 @@ func main() {
 	log.Printf("Listening on port %v\n", srv.Addr)
 
 	// Wait for kill signal of channel
-	quit := make(chan os.Signal, 1)
+	quit := make(chan os.Signal, 2)
 
 	signal.Notify(quit, syscall.SIGINT, syscall.SIGTERM)
 
