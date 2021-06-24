@@ -30,4 +30,4 @@ services:
     volumes:
       - ./account:/go/src/app
     # have to use $$ (double-dollar) so docker doesn't try to substitute a variable
-    command: reflex -r "\.go$$" -s -- sh -c "go run main.go"
+    command: reflex -r "\.go$$" -s -- sh -c "go build -o ./run ."
