@@ -13,7 +13,7 @@ RUN go mod download
 
 COPY . .
 
-RUN go build -o ./run .
+ENTRYPOINT [“reflex”, “-c”, “reflex.conf”]
 
 FROM alpine:latest
 RUN apk --no-cache add ca-certificates
